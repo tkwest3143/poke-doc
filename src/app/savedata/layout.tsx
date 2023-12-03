@@ -41,7 +41,7 @@ export default function RootLayout({
         {children}
       </main>
 
-      <footer className="bg-gray-800 text-white p-4 text-center">
+      <footer className="bg-gray-800 text-white p-2 text-center">
         <p>
           © {currentYear} <a href="https://github.com/tkwest3143">tkwest3143</a>
           . All Rights Reserved.

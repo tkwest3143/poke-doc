@@ -71,6 +71,7 @@ export default function SavedataForm(prop: { id?: number; nextUrl: string }) {
     }
     if (data.pokemons) {
       cloneSavedata.pokemonModels = data.pokemons;
+      cloneSavedata.numberingIDOfPokemons();
     }
     setSaveData(
       new SaveData({

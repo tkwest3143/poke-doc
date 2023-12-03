@@ -45,7 +45,7 @@ export class SaveData {
   }
 
   numberingIDOfPokemons(): void {
-    this.prop.pokemons.map(
+    this.prop.pokemons = this.prop.pokemons.map(
       (pokemon, index): pokemonType => ({
         ...pokemon,
         id: `${this.id}_${index}`,
