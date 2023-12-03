@@ -13,7 +13,7 @@ Poke-Doc is a desktop application for managing the Effort Values (EVs) of Pokém
 ### 必要条件 / Prerequisites
 
 - Node.js (推奨バージョン: 14.x 以上)
-- yarn (オプション)
+- [Rust](https://www.rust-lang.org/ja/learn/get-started)
 
 ### インストール / Installation
 
