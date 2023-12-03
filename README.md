@@ -63,9 +63,7 @@ npm run tauri build
 ### 技術スタック / Tech Stack
 
 - Next.js
-- React
 - Tauri
-- Prisma
 - TypeScript
 - Tailwind CSS
 - Heroicons
