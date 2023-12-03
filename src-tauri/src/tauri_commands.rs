@@ -6,8 +6,7 @@ pub mod command {
     use std::path::PathBuf;
     use std::{fs::metadata, fs::File, io::BufReader};
     fn get_data_directory() -> String {
-        let mut path = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-        path.push("data");
+        let path = PathBuf::from("data");
         match path.to_str() {
             Some(path_str) => path_str.to_string(),
             None => "".to_string(),
