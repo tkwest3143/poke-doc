@@ -38,7 +38,7 @@ export default function SavedataForm(prop: { id?: number; nextUrl: string }) {
               id: 0,
               name: "",
               pokemons: [],
-              series: undefined,
+              series: res.find((series) => series.id === 1),
             })
           );
           setSeriesMasters(res.map((series) => new SeriesMaster(series)));
@@ -85,14 +85,26 @@ export default function SavedataForm(prop: { id?: number; nextUrl: string }) {
     if (saveData.series) {
       try {
         saveData.numberingIDOfPokemons();
-        await invoke<string>("add_savedata", {
-          savedata: JSON.stringify({
-            id: 0,
-            name: saveData.name,
-            series: saveData.series,
-            pokemons: saveData.pokemons,
-          }),
-        });
+        if (prop.id) {
+          await invoke<string>("save_savedata", {
+            savedata: JSON.stringify({
+              id: prop.id,
+              name: saveData.name,
+              series: saveData.series,
+              pokemons: saveData.pokemons,
+            }),
+          });
+        } else {
+          await invoke<string>("add_savedata", {
+            savedata: JSON.stringify({
+              id: 0,
+              name: saveData.name,
+              series: saveData.series,
+              pokemons: saveData.pokemons,
+            }),
+          });
+        }
+
         router.push(prop.nextUrl);
       } catch (e) {
         setErrorMessage("エラーが発生しました");
@@ -110,14 +122,14 @@ export default function SavedataForm(prop: { id?: number; nextUrl: string }) {
       <TextInput
         id="title"
         name="title"
-        placeholder="タイトル名"
+        placeholder="任意のタイトルを入力"
         value={saveData.name}
         onChange={(e) => onChange({ title: e.target.value })}
       />
       <SelectInput
         id="version"
         name="version"
-        placeholder="バージョンを選択"
+        placeholder="シリーズを選択"
         value={saveData.series ? saveData.series.id.toString() : "1"}
         onChange={(e) => onChange({ version: e.target.value })}
         options={seriesMasters.map((series) => {

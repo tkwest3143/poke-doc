@@ -7,6 +7,8 @@ fn main() {
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![
             command::add_savedata,
+            command::save_savedata,
+            command::delete_savedata,
             command::get_all_series_master_list,
             command::get_all_pokemon_master_list,
             command::get_all_nature_master_list,

@@ -22,16 +22,31 @@ export default function Savedata() {
         <h2 className="text-2xl font-bold text-center mb-4">
           セーブデータ一覧
         </h2>
-
-        <SavedataList
-          savedata={saveDatas}
-          onDeleteSavedata={function (id: number): void {}}
-        />
-      </div>
-
-      {/* 固定フッター */}
-      <div className="p-6 bg-white shadow-lg rounded-lg">
-        <CreateSavedataButton />
+        {saveDatas.length === 0 ? (
+          <div className="p-6 bg-white shadow-lg rounded-lg">
+            <CreateSavedataButton />
+          </div>
+        ) : (
+          <>
+            <SavedataList
+              savedata={saveDatas}
+              onDeleteSavedata={async (id: number) => {
+                await invoke("delete_savedata", {
+                  savedataId: id,
+                });
+                const savedatas = await invoke<SavedataType[]>(
+                  "get_all_savedata_list"
+                );
+                setSaveDatas(
+                  savedatas.map((savedata) => new SaveData(savedata))
+                );
+              }}
+            />
+            <div className="p-6 bg-white shadow-lg rounded-lg">
+              <CreateSavedataButton />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

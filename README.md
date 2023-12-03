@@ -19,7 +19,6 @@ Poke-Doc はポケモンの努力値やステータス情報を管理するた�
 
    ```bash
    git clone https://github.com/your-repository/poke-doc.git
-   cd poke-doc
    ```
 
 2. 必要なパッケージをインストールします。
@@ -28,7 +27,9 @@ Poke-Doc はポケモンの努力値やステータス情報を管理するた�
    npm install
    ```
 
-3. 事前スクリプトを実行します。
+3. .env.sample をコピーして.env ファイルを作成します。
+
+4. 事前スクリプトを実行します。
 
    ```bash
    npm run import

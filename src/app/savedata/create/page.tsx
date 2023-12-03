@@ -6,7 +6,7 @@ export default function SavedataCreatePage() {
   const param = useSearchParams();
   const id = param.get("id");
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center">
       <div className="p-6 bg-white shadow-lg rounded-lg">
         <h2 className="text-2xl font-bold text-center mb-4">
           セーブデータを登録する

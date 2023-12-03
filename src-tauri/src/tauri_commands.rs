@@ -218,6 +218,61 @@ pub mod command {
             }),
         }
     }
+    #[tauri::command]
+    pub fn save_savedata(savedata: &str) -> Result<String, Error> {
+        match get_all_savedata_list() {
+            Ok(savedatas) => {
+                let mut new_savedatas = Vec::new();
+                let json_to_savedata: Savedata = serde_json::from_str(savedata).unwrap();
+                for savedata in savedatas {
+                    print!("{}", json_to_savedata.id);
+                    print!("{}", savedata.id);
+                    if savedata.id == json_to_savedata.id {
+                        println!("対象のデータを更新します");
+                        new_savedatas.push(json_to_savedata.clone())
+                    } else {
+                        new_savedatas.push(savedata)
+                    }
+                }
+                let json_string = serde_json::to_string(&new_savedatas).unwrap();
+                println!("{}", json_string);
+                let dir = get_data_directory();
+                let savedata_file_path = dir + "/savedata.json";
+                let mut file = File::create(savedata_file_path).unwrap();
+
+                writeln!(file, "{}", json_string).unwrap();
+                Ok("セーブデータを保存しました".to_string())
+            }
+            Err(_) => Err(Error {
+                error_message: "セーブデータの保存に失敗しました".to_string(),
+            }),
+        }
+    }
+    #[tauri::command]
+    pub fn delete_savedata(savedata_id: usize) -> Result<String, Error> {
+        match get_all_savedata_list() {
+            Ok(savedatas) => {
+                let mut new_savedatas = Vec::new();
+                for savedata in savedatas {
+                    if savedata.id != savedata_id as u32 {
+                        new_savedatas.push(savedata)
+                    } else {
+                    }
+                }
+                let json_string = serde_json::to_string(&new_savedatas).unwrap();
+                println!("{}", json_string);
+                let dir = get_data_directory();
+                let savedata_file_path = dir + "/savedata.json";
+                let mut file = File::create(savedata_file_path).unwrap();
+
+                writeln!(file, "{}", json_string).unwrap();
+                Ok("セーブデータを削除しました".to_string())
+            }
+            Err(_) => Err(Error {
+                error_message: "セーブデータの削除に失敗しました".to_string(),
+            }),
+        }
+    }
 
     #[tauri::command]
     pub fn save_pokemon(pokemon: &str) -> Result<String, Error> {

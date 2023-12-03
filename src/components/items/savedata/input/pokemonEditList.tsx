@@ -44,9 +44,10 @@ const PokemonEditList = (prop: AddPokemonFormProps) => {
               onClick={() => {
                 setShowAddForm(true);
               }}
-              className="p-2 bg-green-500 text-white rounded hover:bg-green-600"
+              className="flex p-2 bg-green-500 text-white rounded hover:bg-green-600"
             >
               <PlusIcon className="h-5 w-5" />
+              ポケモンを追加
             </button>
           )}
           {showAddForm && <AddPokemonForm addPokemon={AddPokemon} />}
