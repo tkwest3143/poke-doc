@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { SaveData } from "@/domain";
 import { Loading } from "@/components/items/loading";
-import PokemonList from "@/components/pokemonList";
+import PokemonList from "@/components/items/pokemon/detail/pokemonList";
 import EditButton from "@/components/items/buttons/editButton";
 import CreateSavedataButton from "@/components/items/buttons/createSaveDataButton";
 import { invoke } from "@tauri-apps/api/tauri";

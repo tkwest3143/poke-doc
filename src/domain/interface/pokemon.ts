@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { pokemonMasterType, pokemonMasterValidaror } from "./pokemonMaster";
+import { natureMasterType } from "./natureMaster";
 
 export const pokemonTypeValidator = {
   nickname: z.string(),
@@ -34,6 +35,7 @@ export type pokemonType = {
   nickname: string;
   id: string;
   level: number;
+  nature?: natureMasterType;
   pokemon_master: pokemonMasterType;
   defeated_pokemon: {
     pokemon_master: pokemonMasterType;

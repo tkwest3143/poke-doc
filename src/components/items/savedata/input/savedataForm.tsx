@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Pokemon, SaveData, SeriesMaster } from "@/domain";
 import { findSavedataOutput } from "@/domain/interface/api/findSavedata";
-import { Loading } from "./items/loading";
-import SelectInput from "./items/select";
-import TextInput from "./items/textInput";
+import { Loading } from "../../loading";
+import SelectInput from "../../select";
+import TextInput from "../../textInput";
 import { useRouter } from "next/navigation";
 import PokemonEditList from "./pokemonEditList";
 import { seriesMasterType } from "@/domain/interface/seriesMaster";

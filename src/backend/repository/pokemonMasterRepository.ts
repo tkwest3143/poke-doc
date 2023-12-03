@@ -1,10 +1,6 @@
 import { pokemonMasterType } from "@/domain/interface/pokemonMaster";
-import { pokeApiAccess } from "../helper/pokeApiHandler";
-import { downloadImage } from "../helper/downloadFile";
-import { exportMasterFile } from "../helper/exportMasterFile";
+import { downloadImage, exportMasterFile, pokeApiAccess } from "../helper";
 export class PokemonMasterRepository {
-  constructor() {}
-
   async fetchPokemonData() {
     const results = (
       await pokeApiAccess<{
@@ -62,6 +58,7 @@ export class PokemonMasterRepository {
         id: number;
         order: number;
         stats: {
+          base_stat: number;
           effort: number;
           stat: {
             name: string;
@@ -126,6 +123,14 @@ export class PokemonMasterRepository {
           defense: specialDefense ? specialDefense.effort : 0,
           speed: speed ? speed.effort : 0,
         };
+        const base_stats = {
+          hp: hp ? hp.base_stat : 0,
+          attack: attack ? attack.base_stat : 0,
+          block: defense ? defense.base_stat : 0,
+          concentration: specialAttack ? specialAttack.base_stat : 0,
+          defense: specialDefense ? specialDefense.base_stat : 0,
+          speed: speed ? speed.base_stat : 0,
+        };
         let image = pokemon.sprites.front_default
           ? await downloadImage(
               pokemon.sprites.front_default,
@@ -156,6 +161,7 @@ export class PokemonMasterRepository {
           get_effort_value: {
             ...getEffortValue,
           },
+          base_stats,
         });
       }
     }

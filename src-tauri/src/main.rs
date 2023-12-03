@@ -9,6 +9,7 @@ fn main() {
             command::add_savedata,
             command::get_all_series_master_list,
             command::get_all_pokemon_master_list,
+            command::get_all_nature_master_list,
             command::get_all_savedata_list,
             command::get_savedata,
             command::get_savedata_with_all_series,

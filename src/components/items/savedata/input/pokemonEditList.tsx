@@ -1,10 +1,8 @@
 import { Pokemon } from "@/domain";
 import { MinusCircleIcon, PlusIcon } from "@heroicons/react/24/solid";
-import Image from "next/image";
 import { useState } from "react";
 import AddPokemonForm from "./addPokemonForm";
-import { PokemonType } from "@/constants/pokemonType";
-import PokemonTile from "./pokemonTile";
+import PokemonTile from "../../pokemon/detail/pokemonTile";
 
 interface AddPokemonFormProps {
   pokemons: Pokemon[];

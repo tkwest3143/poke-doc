@@ -12,7 +12,13 @@ export default function RootLayout({
     <div className="flex flex-col h-screen">
       <header className="bg-gray-800 text-white p-4">
         <div className="container mx-auto flex justify-between items-center">
-          <h1 className="text-xl font-bold">ポケモン管理ツール</h1>
+          <h1
+            className="text-xl font-bold"
+            style={{ cursor: "pointer" }}
+            onClick={() => router.push("/")}
+          >
+            ポケモン管理ツール
+          </h1>
           <div>
             <button
               onClick={() => router.back()}
@@ -36,7 +42,10 @@ export default function RootLayout({
       </main>
 
       <footer className="bg-gray-800 text-white p-4 text-center">
-        <p>© {currentYear} Your Company Name. All Rights Reserved.</p>
+        <p>
+          © {currentYear} <a href="https://github.com/tkwest3143">tkwest3143</a>
+          . All Rights Reserved.
+        </p>
       </footer>
     </div>
   );

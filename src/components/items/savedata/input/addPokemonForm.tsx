@@ -1,7 +1,7 @@
 import { Pokemon } from "@/domain";
 import React, { useState } from "react";
-import SelectPokemonMasterDialog from "./selectPokemonMasterDialog";
-import AddButton from "./items/buttons/addButton";
+import SelectPokemonMasterDialog from "../../../selectPokemonMasterDialog";
+import AddButton from "../../buttons/addButton";
 import Image from "next/image";
 
 interface AddPokemonFormProps {

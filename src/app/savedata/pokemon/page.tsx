@@ -1,6 +1,6 @@
 "use client";
-import EffortInputPage from "@/components/pages/effortInput";
 import NotFoundDataPage from "@/components/pages/notFoundData";
+import PokemonInputPage from "@/components/pages/pokemonInput";
 import { useSearchParams } from "next/navigation";
 
 export default function PokemonPage() {
@@ -9,5 +9,5 @@ export default function PokemonPage() {
   if (!id) {
     return <NotFoundDataPage />;
   }
-  return <EffortInputPage params={{ id }} />;
+  return <PokemonInputPage params={{ id }} />;
 }

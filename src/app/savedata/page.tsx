@@ -1,7 +1,7 @@
 "use client";
 import { ReactNode, useEffect, useState } from "react";
 import { invoke } from "@tauri-apps/api/tauri";
-import SavedataList from "@/components/savedataList";
+import SavedataList from "@/components/items/savedata/detail/savedataList";
 import CreateSavedataButton from "@/components/items/buttons/createSaveDataButton";
 import { SaveData } from "@/domain";
 import { SavedataType } from "@/domain/interface/savedata";

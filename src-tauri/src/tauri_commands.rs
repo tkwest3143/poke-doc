@@ -1,5 +1,7 @@
 pub mod command {
-    use crate::data::{Error, FindSavedata, Pokemon, PokemonMaster, Savedata, SeriesMaster};
+    use crate::data::{
+        Error, FindSavedata, NatureMaster, Pokemon, PokemonMaster, Savedata, SeriesMaster,
+    };
     use std::io::Write;
     use std::path::PathBuf;
     use std::{fs::metadata, fs::File, io::BufReader};
@@ -137,6 +139,30 @@ pub mod command {
             }
         }
         pokemon_master
+    }
+
+    #[tauri::command]
+    pub fn get_all_nature_master_list() -> Vec<NatureMaster> {
+        let mut nature_master: Vec<NatureMaster> = Vec::new();
+
+        let dir = get_data_directory();
+        let nature_master_file_path = dir + "/natureMaster.json";
+        match metadata(nature_master_file_path.to_string()) {
+            Ok(metadata) => {
+                if metadata.is_file() {
+                    let master_file = File::open(nature_master_file_path).unwrap();
+                    let reader = BufReader::new(master_file);
+                    let json_to_data: Vec<NatureMaster> = serde_json::from_reader(reader).unwrap();
+                    nature_master.extend(json_to_data)
+                } else {
+                    println!("Path exists, but is not a file.");
+                }
+            }
+            Err(_) => {
+                println!("File does not exist.");
+            }
+        }
+        nature_master
     }
 
     #[tauri::command]

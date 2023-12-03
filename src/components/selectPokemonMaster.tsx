@@ -3,6 +3,7 @@ import { pokemonMasterType } from "@/domain/interface/pokemonMaster";
 import { PokemonMaster } from "@/domain/pokemonMaster";
 import Image from "next/image";
 import { invoke } from "@tauri-apps/api/tauri";
+import { Loading } from "./items/loading";
 
 interface SelectPokemonMasterProps {
   selectPokemonMaster: (value: PokemonMaster) => void;
@@ -16,13 +17,16 @@ export default function SelectPokemonMaster({
   const [filteredPokemonMasters, setFilteredPokemonMasters] = useState<
     PokemonMaster[]
   >([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     invoke<pokemonMasterType[]>("get_all_pokemon_master_list")
       .then((res) => {
         setPokemonMasters(res);
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => setIsLoading(false));
   }, []);
   useEffect(() => {
     const filtered = pokemonMasters
@@ -30,6 +34,10 @@ export default function SelectPokemonMaster({
       .map((pm) => new PokemonMaster(pm));
     setFilteredPokemonMasters(filtered);
   }, [searchQuery, pokemonMasters]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div className="mb-4">

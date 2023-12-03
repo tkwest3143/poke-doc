@@ -27,4 +27,12 @@ export type pokemonMasterType = {
     defense: number;
     speed: number;
   };
+  base_stats: {
+    hp: number;
+    attack: number;
+    block: number;
+    concentration: number;
+    defense: number;
+    speed: number;
+  };
 };

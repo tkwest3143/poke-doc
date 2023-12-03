@@ -1,7 +1,7 @@
 import { SaveData } from "@/domain";
 import Image from "next/image";
-import DeleteButton from "./items/buttons/deleteButton";
-import DetailButton from "./items/buttons/detailButton";
+import DeleteButton from "../../buttons/deleteButton";
+import DetailButton from "../../buttons/detailButton";
 
 export default function SavedataList({
   savedata,

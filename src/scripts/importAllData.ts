@@ -1,6 +1,7 @@
 import {
   SeriesMasterRepository,
   PokemonMasterRepository,
+  NatureMasterRepository,
 } from "@/backend/repository";
 import * as dotenv from "dotenv";
 const importeMasterData = async () => {
@@ -13,9 +14,11 @@ const importeMasterData = async () => {
   });
 
   const seriesMasterRepository = new SeriesMasterRepository();
+  const natureMasterRepository = new NatureMasterRepository();
   const pokemonMasterRepository = new PokemonMasterRepository();
   await pokemonMasterRepository.fetchPokemonData();
   await seriesMasterRepository.fetchAllSeries();
+  await natureMasterRepository.fetchAllNature();
 };
 
 importeMasterData()

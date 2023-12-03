@@ -1,7 +1,7 @@
 import { Pokemon } from "@/domain";
 import Image from "next/image";
 
-import DetailButton from "./items/buttons/detailButton";
+import DetailButton from "../../buttons/detailButton";
 
 interface PokemonListProps {
   pokemons: Pokemon[];

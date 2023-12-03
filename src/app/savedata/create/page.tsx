@@ -1,5 +1,5 @@
 "use client";
-import SavedataForm from "@/components/savedataForm";
+import SavedataForm from "@/components/items/savedata/input/savedataForm";
 import { useSearchParams } from "next/navigation";
 
 export default function SavedataCreatePage() {

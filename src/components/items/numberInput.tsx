@@ -1,22 +1,26 @@
-interface TextInputProps {
+interface NumberInputProps {
   label?: string;
   id?: string;
   name?: string;
   placeholder?: string;
-  value?: string;
+  value?: number;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
+  min?: number;
+  max?: number;
 }
 
-export default function TextInput({
-  id,
+export default function NumberInput({
   label,
+  id,
   name,
   placeholder,
   value,
   onChange,
   className,
-}: TextInputProps) {
+  min,
+  max,
+}: NumberInputProps) {
   const baseClasses =
     "block w-full px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:border-cyan-500 focus:ring focus:ring-cyan-200 focus:ring-opacity-50";
 
@@ -31,13 +35,15 @@ export default function TextInput({
         </label>
       )}
       <input
-        type="text"
         id={id}
-        name={name}
+        type="number"
         placeholder={placeholder}
+        name={name}
         value={value}
+        min={min}
+        max={max}
         onChange={onChange}
-        className={`${baseClasses} ${className}`}
+        className={[baseClasses, className].join(" ")}
       />
     </>
   );

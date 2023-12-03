@@ -29,6 +29,7 @@ pub struct Pokemon {
     pub nickname: String,
     pub id: String,
     pub level: u32,
+    pub nature: Option<NatureMaster>,
     pub pokemon_master: PokemonMaster,
     pub defeated_pokemon: Vec<DefeatedPokemon>,
     pub effort_value: StatusValue,
@@ -56,6 +57,7 @@ pub struct PokemonMaster {
     pub name: String,
     pub image: String,
     pub types: Vec<String>,
+    pub base_stats: StatusValue,
     pub get_effort_value: StatusValue,
 }
 
@@ -65,4 +67,12 @@ pub struct SeriesMaster {
     pub name: String,
     pub max_effort_value: u32,
     pub max_individual_value: u32,
+}
+
+#[derive(Serialize, Deserialize, Clone)]
+pub struct NatureMaster {
+    pub id: u32,
+    pub name: String,
+    pub decreased_stat: Option<String>,
+    pub increased_stat: Option<String>,
 }
