@@ -11,7 +11,7 @@ export default function SavedataList({
   onDeleteSavedata: (id: number) => void;
 }) {
   return (
-    <div className="flex flex-col items-center justify-between p-24 bg-gray-100">
+    <div className="flex flex-col items-center justify-between p-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
         {savedata.map((saveData) => (
           <div

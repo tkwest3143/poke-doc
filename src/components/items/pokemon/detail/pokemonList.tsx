@@ -9,8 +9,8 @@ interface PokemonListProps {
 
 export default function PokemonList({ pokemons }: PokemonListProps) {
   return (
-    <div className="container mx-auto p-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="container p-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
         {pokemons.map((pokemon) => (
           <div key={pokemon.id} className="bg-white rounded-lg shadow-md p-4">
             <Image

@@ -34,18 +34,15 @@ export default function SaveDataDetailPage({
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center  min-h-screen bg-gray-100 p-4">
       <div className="p-6 bg-white shadow-lg rounded-lg border border-gray-200">
         <h2 className="text-2xl font-bold text-center mb-4">所持ポケモン</h2>
 
         <PokemonList pokemons={saveDataList.pokemonModels} />
       </div>
 
-      <div className="mt-6 p-6 bg-white shadow-lg rounded-lg">
-        <EditButton
-          href={`/savedata/create?id=${params.id}`}
-          className="mb-6"
-        />
+      <div className="grid grid-cols-2 gap-4 mt-4 p-4 bg-white shadow-lg rounded-lg">
+        <EditButton href={`/savedata/create?id=${params.id}`} />
         <CreateSavedataButton />
       </div>
     </div>
