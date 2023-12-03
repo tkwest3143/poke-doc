@@ -2,9 +2,7 @@
 
 ## 概要 / Overview
 
-Poke-Doc はポケモンの努力値を管理するためのデスクトップアプリケーションです。Next.js と Tauri を使用して開発されており、効率的にポケモンのデータ管理を行うことができます。
-
-Poke-Doc is a desktop application for managing the Effort Values (EVs) of Pokémon. It is developed using Next.js and Tauri, offering efficient data management for Pokémon trainers.
+Poke-Doc はポケモンの努力値やステータス情報を管理するためのデスクトップアプリケーションです。Next.js と Tauri を使用して開発されており、効率的にポケモンのデータ管理を行うことができます。
 
 ## 開始方法 / Getting Started
 
